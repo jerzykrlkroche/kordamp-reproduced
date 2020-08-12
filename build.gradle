@@ -1,0 +1,29 @@
+plugins {
+    id 'pl.allegro.tech.build.axion-release' version '1.10.1'
+}
+
+scmVersion {
+    tag {
+        prefix = 'root-module'
+    }
+
+    branchVersionIncrementer = [
+            'master': 'incrementMinor',
+            '.*'    : 'incrementPatch'
+    ]
+}
+
+allprojects {
+
+    group = 'com.roche.kordmap.reproduced'
+
+    version = scmVersion.version
+
+    apply plugin: 'idea'
+
+    task allDeps(type: DependencyReportTask) {}
+}
+
+task aggregateJacocoReport {
+    // workaround for kordamp requiring aggregateJacocoReport here
+}

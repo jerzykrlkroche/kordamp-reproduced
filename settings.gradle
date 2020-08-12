@@ -1,0 +1,3 @@
+rootProject.name = 'root-module'
+
+include 'submodule-a'
